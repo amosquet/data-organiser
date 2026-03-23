@@ -6,7 +6,7 @@ from google.genai import types
 
 def call_gemini(text_input: str):
     """Sends the text to Google's Gemini model."""
-    if not config.GEMINI_API_KEY:
+    if not os.environ.get("GEMINI_API_KEY"):
         return "Gemini API key missing."
 
     client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))

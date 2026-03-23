@@ -1,7 +1,6 @@
 # import llm_clients
 import argparse
 import os
-from configparser import ConfigParser
 
 import processor
 
@@ -26,7 +25,7 @@ def main():
         "organisation parameters",
         nargs="?",
         default="config.txt",  # don't know if this will remain a txt file, might change
-        help="File containing the parameters for how sorting should be handled, where files go and how it's determined",
+        help="File containing the parameters for how sorting should be handled, where files go and how it's determined (defaults to config.txt)",
     )
 
     parser.add_argument(
