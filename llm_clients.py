@@ -2,12 +2,12 @@ import os
 
 from google import genai
 from google.genai import types
-
-# from openai import OpenAI
+from openai import OpenAI
 
 
 # Interact with Google's Gemini model.
 def call_gemini(text_input: str):
+
     if not os.environ.get("GEMINI_API_KEY"):
         return "Gemini API key missing."
 
@@ -23,17 +23,17 @@ def call_gemini(text_input: str):
     return response.text
 
 
-# def call_ollama(text_input: str, model_name: str):
+def call_ollama(text_input: str, model_name: str):
 
-#     client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama-local")
+    client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama-local")
 
-#     response = client.chat.completions.create(
-#         model=model_name,
-#         messages=[
-#             {"role": "system", "content": config.SYSTEM_PROMPT},
-#             {"role": "user", "content": text_input},
-#         ],
-#         # temperature = 0.1
-#     )
+    response = client.chat.completions.create(
+        model=model_name,
+        messages=[
+            {"role": "system", "content": config.SYSTEM_PROMPT},
+            {"role": "user", "content": text_input},
+        ],
+        # temperature = 0.1
+    )
 
-#     return response.choices[0].message.content
+    return response.choices[0].message.content
