@@ -12,3 +12,6 @@ wheels/
 
 # MacOS crap
 .DS_Store
+
+# misc
+config.json

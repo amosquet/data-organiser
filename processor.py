@@ -5,11 +5,12 @@ from PIL import Image
 
 def doc_extract(file_path: str):
 
+    all_blocks = []
     try:
         with pymupdf.open(file_path) as doc:
             for page in doc:
-                text = page.get_text("blocks")
-        return text
+                all_blocks.extend(page.get_text("blocks"))
+        return all_blocks
 
     except FileNotFoundError:
         print(f"Error: The file at {file_path} was not found.")

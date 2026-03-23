@@ -22,14 +22,14 @@ def main():
     )
 
     parser.add_argument(
-        "organisation parameters",
+        "organisation_parameters",
         nargs="?",
-        default="config.txt",  # don't know if this will remain a txt file, might change
-        help="File containing the parameters for how sorting should be handled, where files go and how it's determined (defaults to config.txt)",
+        default="config.json",  # don't know if this will remain a txt file, might change
+        help="File containing the parameters for how sorting should be handled, where files go and how it's determined (defaults to config.json)",
     )
 
     parser.add_argument(
-        "LLM use",
+        "LLM",
         nargs="?",
         choices=[0, "gemini", "ollama"],
         default=0,  # no LLM will be used by default
