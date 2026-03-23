@@ -3,6 +3,7 @@ import pytesseract
 from PIL import Image
 
 
+# Extract text from documents
 def doc_extract(file_path: str):
 
     all_blocks = []
@@ -21,6 +22,7 @@ def doc_extract(file_path: str):
         return "-2"
 
 
+# Extract text from images
 def tesseract_img_extract(file_path: str) -> str:
 
     try:

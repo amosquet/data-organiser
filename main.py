@@ -3,6 +3,7 @@ import argparse
 import os
 
 import processor
+import router
 
 
 def main():
@@ -25,7 +26,7 @@ def main():
         "organisation_parameters",
         nargs="?",
         default="config.json",  # don't know if this will remain a txt file, might change
-        help="File containing the parameters for how sorting should be handled, where files go and how it's determined (defaults to config.json)",
+        help="File containing the parameters for sorting, where files go and how it's determined (defaults to config.json)",
     )
 
     parser.add_argument(
@@ -40,6 +41,8 @@ def main():
 
     source = args.source_directory
     target = args.target_directory
+    config = args.organisation_parameters
+    llm = args.LLM
 
 
 if __name__ == "__main__":
