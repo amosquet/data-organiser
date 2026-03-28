@@ -11,7 +11,7 @@ def doc_extract(file_path: str):
         with pymupdf.open(file_path) as doc:
             for page in doc:
                 all_blocks.extend(page.get_text("blocks"))
-        return all_blocks
+        return str(all_blocks)
 
     except FileNotFoundError:
         print(f"Error: The file at {file_path} was not found.")

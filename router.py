@@ -22,12 +22,12 @@ def load_config(config_path: Path) -> dict:
 
 
 # Evaluate any string (filename or extracted text) against the rules.
-def regex_categorise(target_string: str, rules: dict) -> str | None:
+def regex_categorise(target_string: str, rules: dict) -> str:
     if not target_string:
-        return None
+        return ""
 
     for folder, patterns in rules.items():
         for pattern in patterns:
             if re.search(pattern, target_string, re.IGNORECASE):
                 return folder
-    return None
+    return ""

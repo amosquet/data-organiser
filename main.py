@@ -1,9 +1,7 @@
-# import llm_clients
 import argparse
 import os
 
-import processor
-import router
+import sorter
 
 
 def main():
@@ -39,10 +37,12 @@ def main():
 
     args = parser.parse_args()
 
-    source = args.source_directory
-    target = args.target_directory
-    config = args.organisation_parameters
+    source = os.fsencode(args.source_directory)
+    target = os.fsencode(args.target_directory)
+    config = os.fsencode(args.organisation_parameters)
     llm = args.LLM
+
+    sorter.sort(source, target, config, llm)
 
 
 if __name__ == "__main__":

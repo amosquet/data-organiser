@@ -6,7 +6,9 @@ from openai import OpenAI
 
 
 # Interact with Google's Gemini model.
-def call_gemini(text_input: str):
+def call_gemini(
+    text_input: str,
+):
 
     if not os.environ.get("GEMINI_API_KEY"):
         return "Gemini API key missing."
