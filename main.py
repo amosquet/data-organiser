@@ -1,5 +1,6 @@
 import argparse
 import os
+from pathlib import Path
 
 import sorter
 
@@ -37,9 +38,9 @@ def main():
 
     args = parser.parse_args()
 
-    source = os.fsencode(args.source_directory)
-    target = os.fsencode(args.target_directory)
-    config = os.fsencode(args.organisation_parameters)
+    source = Path(args.source_directory)
+    target = Path(args.target_directory)
+    config = Path(args.organisation_parameters)
     llm = args.LLM
 
     sorter.sort(source, target, config, llm)

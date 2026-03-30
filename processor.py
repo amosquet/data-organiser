@@ -6,12 +6,12 @@ from PIL import Image
 # Extract text from documents
 def doc_extract(file_path: str):
 
-    all_blocks = []
+    content = ""
     try:
         with pymupdf.open(file_path) as doc:
             for page in doc:
-                all_blocks.extend(page.get_text("blocks"))
-        return str(all_blocks)
+                content += page.get_text("text" + "\n")
+        return content
 
     except FileNotFoundError:
         print(f"Error: The file at {file_path} was not found.")

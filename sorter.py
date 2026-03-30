@@ -23,7 +23,9 @@ def local_sort(source, target, config):
 
         # regex on filename first
         if folder != "":
-            shutil.move(filename, folder)
+            file_path = os.path.join(source, filename)
+            target_path = os.path.join(target, folder)
+            shutil.move(file_path, target_path)
         else:
             # if that doesn't work, extract text and regex on that
             file_path = os.path.join(source, filename)
@@ -36,8 +38,13 @@ def local_sort(source, target, config):
 
             folder = router.regex_categorise(extracted_text, rules)
 
-            if(folder != "-1" || "-2" || "-3"): # on sucessfull text extraction, move file to appropriate directory
-                shutil.move(filename, folder)
+            if folder not in (
+                "-1",
+                "-2",
+                "-3",
+            ):  # on sucessfull text extraction, move file to appropriate directory
+                target_path = os.path.join(target, folder)
+                shutil.move(file_path, target_path)
 
 
 def llm_sort(source, target, config, llm):
@@ -55,4 +62,12 @@ def llm_sort(source, target, config, llm):
         else:
             continue
 
-        folder = llm_clients()
+        if llm == "gemini":
+            folder = llm_clients.call_gemini(extracted_text)
+        elif llm == "ollama":
+            # Assuming you define a model name
+            folder = llm_clients.call_ollama(extracted_text, "llama3")
+
+        if folder:
+            target_path = os.path.join(target, folder)
+            shutil.move(file_path, target_path)
