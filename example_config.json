@@ -1,0 +1,6 @@
+{
+  "ECE_30411/Lectures": ["(?i)mtg_?\\d+", "(?i)meeting \\d+"],
+  "ECE_30411/Homework_Solutions": ["(?i)soln", "(?i)solution"],
+  "ECE_30411/My_Submissions": ["(?i)ece304_hw\\d+"],
+  "ECE_30411/Scaffold": ["(?i)hw\\s*set\\s*\\d+", "(?i)hw\\s*\\d+"]
+}

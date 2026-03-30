@@ -1,8 +1,9 @@
+import os
+import shutil
+
 import llm_clients
 import processor
 import router
-import os
-import shutil
 
 
 def sort(source, target, config, llm):
@@ -17,14 +18,13 @@ def local_sort(source, target, config):
     rules = router.load_config(config)
 
     for file in os.listdir(source):
-
         filename = os.fsdecode(file)
         folder = router.regex_categorise(filename, rules)
 
         # regex on filename first
-        if(folder != ""):
+        if folder != "":
             shutil.move(filename, folder)
-        else
+        else:
             # if that doesn't work, extract text and regex on that
             file_path = os.path.join(source, filename)
             if filename.lower().endswith((".pdf", ".docx", ".txt")):
@@ -38,7 +38,6 @@ def local_sort(source, target, config):
 
             if(folder != "-1" || "-2" || "-3"): # on sucessfull text extraction, move file to appropriate directory
                 shutil.move(filename, folder)
-
 
 
 def llm_sort(source, target, config, llm):
